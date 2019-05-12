@@ -74,33 +74,38 @@ a {
 .content {
   height: 100%;
 
-  .code {
-    width: 500px;
-    border-radius: $console-border-radius;
-    padding: 20px 0 0;
-    margin-top: 30px;
-    background: #fff;
-    font-family: 'Monaco', 'Courier New', serif;
-    font-size: 13px;
-    color: #ffffff;
-    filter: brightness(55%);
-  }
+  .landing {
+    margin-top: 45px;
 
-  .console {
-    padding: 30px;
-    background: #2e2f33;
-    filter: brightness(100%);
-    border-bottom-left-radius: $console-border-radius;
-    border-bottom-right-radius: $console-border-radius;
-  }
+    .quote {
+      padding-top: 20px;
+      font-size: 100px;
+      font-weight: 300;
+      color: $font-color-light;
 
-  .quote {
-    margin-top: 65px;
-    font-size: 100px;
-    font-weight: 300;
+      p {
+        margin: 20px 0 0;
+      }
+    }
 
-    p {
-      margin: 20px 0 0;
+    .console {
+      .background {
+        border-radius: $console-border-radius;
+        padding-top: 20px;
+        background: #fff;
+        font-family: 'Monaco', 'Courier New', serif;
+        font-size: 13px;
+        color: #ffffff;
+        filter: brightness(55%);
+      }
+
+      .code {
+        padding: 30px;
+        background: #2e2f33;
+        filter: brightness(100%);
+        border-bottom-left-radius: $console-border-radius;
+        border-bottom-right-radius: $console-border-radius;
+      }
     }
   }
 
