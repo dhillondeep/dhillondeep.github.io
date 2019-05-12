@@ -1,16 +1,24 @@
-@import "bootstrap.scss";
-@import "font.scss";
+@import "./node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
 
-$font-color-light: #777777;
+$body-bg: #050608;
+
+@import "bootstrap";
+@import 'font.scss';
+
+$font-color-light: #a5a2a2;
 $primary-color: #3cb0ff;
+$console-border-radius: 15px;
 
 html {
   height: 100%;
 }
+
 body {
-  font-family: "mp", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'mp', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   height: 100%;
 }
+
 #opl {
   width: 100px;
   position: absolute;
@@ -21,15 +29,19 @@ body {
 #git {
   color: #333;
 }
+
 #dribbble {
   color: #ea4c89;
 }
+
 #so {
   color: #f48024;
 }
+
 #lki {
   color: #0077b5;
 }
+
 #medium {
   color: #00ab6c;
 }
@@ -38,10 +50,12 @@ a {
   color: $primary-color;
   font-weight: 600;
   text-decoration: none;
+
   &:hover {
     text-decoration: none;
     color: lighten($primary-color, 10);
   }
+
   &:visited,
   &:focus,
   &:active {
@@ -53,56 +67,87 @@ a {
 .pattern {
   height: 100px;
   width: 100%;
-  background-image: url("/img/pattern.svg");
+  background-image: url('/img/pattern.svg');
   opacity: 0.2;
 }
 
 .content {
   height: 100%;
-  .header {
-    margin-top: 200px;
-    img {
-      width: 100px;
+
+  .landing {
+    margin-top: 45px;
+
+    .quote {
+      padding-top: 20px;
+      font-size: 100px;
+      font-weight: 300;
+      color: $font-color-light;
+
+      p {
+        margin: 20px 0 0;
+      }
+    }
+
+    .console {
+      .background {
+        border-radius: $console-border-radius;
+        padding-top: 20px;
+        background: #fff;
+        font-family: 'Monaco', 'Courier New', serif;
+        font-size: 13px;
+        color: #ffffff;
+        filter: brightness(55%);
+      }
+
+      .code {
+        padding: 30px;
+        background: #2e2f33;
+        filter: brightness(100%);
+        border-bottom-left-radius: $console-border-radius;
+        border-bottom-right-radius: $console-border-radius;
+      }
     }
   }
-  .quote {
-    padding-top: 100px;
-    font-size: 100px;
-    font-weight: 300;
-    p {
-      margin: 20px 0 0;
-    }
-  }
+
   .divider {
     margin: 70px 0;
   }
+
   .about {
     font-size: 27px;
     line-height: 57px;
     max-width: 900px;
     color: $font-color-light;
+
     .intro {
       margin-bottom: 100px;
     }
   }
+
   .links {
     padding-top: 40px;
+
     a {
       margin-right: 40px;
       font-size: 27px;
       font-weight: 800;
     }
   }
+
   .projects {
     margin-top: 240px;
+
     .project {
       margin-bottom: 100px;
+
       &.left {
         padding-right: 62px;
       }
+
       &.right {
         padding-left: 62px;
       }
+
       .image {
         height: 540px;
         width: 100%;
@@ -114,20 +159,24 @@ a {
         justify-content: center;
         position: relative;
         min-height: 500px;
+
         &:hover {
           overflow: hidden;
+
           img {
             filter: blur(30px);
           }
+
           .hover {
             opacity: 1;
           }
         }
+
         .hover {
           position: absolute;
           width: 100%;
           height: 100%;
-          background-color: rgba(#000, 0.70);
+          background-color: rgba(#000, 0.7);
           z-index: 10;
           display: flex;
           align-items: center;
@@ -138,41 +187,52 @@ a {
           opacity: 0;
           transition: opacity 0.2s ease;
         }
+
         img {
           width: 100%;
           transition: filter 0.3s ease;
         }
+
         &.m {
           background-color: #ffd3dd;
         }
+
         &.h {
-          background-color: #F4F5FC;
+          background-color: #f4f5fc;
         }
+
         &.c {
           background-color: #fff9c7;
         }
+
         &.r {
           background-color: #d4eedb;
         }
+
         &.p {
           background-color: #e3eeff;
         }
+
         &.i {
           background-color: #ffcec7;
         }
+
         &.statements {
           background-color: #e4e3ff;
         }
+
         &.e {
           background-color: #efe4df;
         }
       }
+
       .details {
         .title {
           font-size: 30px;
           font-weight: 500;
           margin: 40px 0 30px;
         }
+
         .description {
           font-size: 20px;
           color: $font-color-light;
@@ -180,6 +240,7 @@ a {
         }
       }
     }
+
     .divider {
       margin: 20px 0 70px;
     }
@@ -195,19 +256,23 @@ a {
 .contact {
   width: 100%;
   padding: 100px 0 20px;
-  border-top: 1px solid #EEEEEE;
+  border-top: 1px solid #eeeeee;
   position: relative;
+
   .footer {
     text-align: center;
+
     img {
       width: 80px;
       border-radius: 50%;
       margin-bottom: 10px;
     }
+
     .credit {
       font-size: 20px;
       margin-bottom: 30px;
     }
+
     .license {
       line-height: 25px;
     }
@@ -220,33 +285,41 @@ a {
   text-align: center;
 }
 
+
 @media (min-width: 1600px) {
   .container {
     width: 1440px;
   }
 }
+
 @media (min-width: 768px) and (max-width: 1024px) {
   .content {
     .quote {
       padding-top: 40px;
       font-size: 70px;
     }
+
     .divider {
       margin: 40px 0;
       width: 100px;
     }
+
     .about {
       font-size: 22px;
       line-height: 50px;
+
       .intro {
         margin-bottom: 60px;
       }
     }
+
     .projects {
       margin-top: 200px;
     }
+
     .links {
       padding-top: 40px;
+
       a {
         margin-right: 40px;
         font-size: 22px;
@@ -254,6 +327,7 @@ a {
     }
   }
 }
+
 @media (max-width: 1024px) and (orientation: portrait) {
   .content {
     .projects {
@@ -262,6 +336,7 @@ a {
         &.left {
           padding: 0;
         }
+
         .image {
           min-height: 200px;
           height: 100%;
@@ -271,6 +346,7 @@ a {
     }
   }
 }
+
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
   .content {
     .links {
@@ -280,6 +356,7 @@ a {
     }
   }
 }
+
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   .pattern {
     height: 50px;
@@ -287,28 +364,34 @@ a {
   .content {
     .header {
       margin-top: 100px;
+
       img {
         width: 80px;
       }
     }
+
     .projects {
       .project {
         &.left {
           padding-right: 10px;
         }
+
         &.right {
           padding-left: 10px;
         }
+
         .image {
           height: 100%;
           padding: 10px;
           min-height: 200px;
         }
+
         .details {
           .title {
             font-size: 26px;
             margin: 30px 0 20px;
           }
+
           .description {
             font-size: 18px;
             line-height: 34px;
@@ -329,27 +412,34 @@ a {
   .content {
     .header {
       margin-top: 120px;
+
       img {
         width: 60px;
       }
     }
+
     .quote {
       padding-top: 10px;
       font-size: 50px;
     }
+
     .divider {
       margin: 30px 0;
       width: 80px;
     }
+
     .about {
       font-size: 20px;
       line-height: 40px;
+
       .intro {
         margin-bottom: 60px;
       }
     }
+
     .links {
       padding-top: 30px;
+
       a {
         margin-right: 25px;
         display: inline-block;
@@ -357,28 +447,35 @@ a {
         margin-bottom: 20px;
       }
     }
+
     .projects {
       margin-top: 150px;
+
       .project {
         margin-bottom: 80px;
+
         &.right,
         &.left {
           padding: 0;
         }
+
         .details {
           .title {
             font-size: 22px;
             margin: 30px 0 20px;
           }
+
           .description {
             font-size: 18px;
           }
         }
       }
+
       .divider {
         margin: 0px 0 50px;
       }
     }
+
     .more {
       font-size: 22px;
       padding: 30px 0;
