@@ -5,9 +5,47 @@ $body-bg: #050608;
 @import "bootstrap";
 @import 'font.scss';
 
-$font-color-light: #a5a2a2;
+
+// page content colors
+$content-color: #a5a2a2;
 $primary-color: #3cb0ff;
+
+// tag colors
+$github-tag-color: #333;
+$gitlab-tag-color: #333;
+$lki-tag-color: #0077b5;
+$medium-tag-color: #00ab6c;
+$so-tag-color: #f48024;
+$dribble-tag-color: #ea4c89;
+
+// measurements
 $console-border-radius: 15px;
+$landing-top-margin: 35px;
+
+// media mixins
+@mixin for-small-phone-only {
+  @media (max-width: 400px) {
+    @content;
+  }
+}
+
+@mixin for-phone-only {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin for-long-phone-only {
+  @media (min-height: 600px) and (max-height: 900px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-only {
+  @media (min-width: 768px) and (max-width: 1024px) {
+    @content;
+  }
+}
 
 html {
   height: 100%;
@@ -26,24 +64,24 @@ body {
   top: 100px;
 }
 
-#git {
-  color: #333;
+#github {
+  color: $github-tag-color;
 }
 
-#dribbble {
-  color: #ea4c89;
+#dribble {
+  color: $dribble-tag-color;
 }
 
 #so {
-  color: #f48024;
+  color: $so-tag-color;
 }
 
 #lki {
-  color: #0077b5;
+  color: $lki-tag-color;
 }
 
 #medium {
-  color: #00ab6c;
+  color: $medium-tag-color;
 }
 
 a {
@@ -71,20 +109,41 @@ a {
   opacity: 0.2;
 }
 
-.content {
-  height: 100%;
 
+.content {
   .landing {
-    margin-top: 45px;
+    margin-top: $landing-top-margin;
 
     .quote {
       padding-top: 20px;
       font-size: 100px;
       font-weight: 300;
-      color: $font-color-light;
+      color: $content-color;
 
       p {
         margin: 20px 0 0;
+      }
+
+      @include for-tablet-only {
+        margin-top: $landing-top-margin + 15px;
+        font-size: 80px;
+      }
+
+      @include for-phone-only {
+        margin-top: $landing-top-margin + 45px;
+        margin-bottom: 210px;
+        font-size: 60px;
+      }
+
+      @include for-small-phone-only {
+        margin-top: $landing-top-margin;
+        margin-bottom: 200px;
+        font-size: 60px;
+      }
+
+      @include for-long-phone-only {
+        margin-top: $landing-top-margin + 60px;
+        margin-bottom: 310px;
       }
     }
 
@@ -97,6 +156,10 @@ a {
         font-size: 13px;
         color: #ffffff;
         filter: brightness(55%);
+
+        @include for-small-phone-only {
+          font-size: 10px;
+        }
       }
 
       .code {
@@ -111,141 +174,170 @@ a {
 
   .divider {
     margin: 70px 0;
+
+    @include for-tablet-only {
+      margin: 40px 0;
+      width: 100px;
+    }
   }
 
   .about {
     font-size: 27px;
     line-height: 57px;
     max-width: 900px;
-    color: $font-color-light;
+    color: $content-color;
+
+    @include for-tablet-only {
+      font-size: 22px;
+      line-height: 50px;
+
+    }
 
     .intro {
       margin-bottom: 100px;
-    }
-  }
 
-  .links {
-    padding-top: 40px;
-
-    a {
-      margin-right: 40px;
-      font-size: 27px;
-      font-weight: 800;
-    }
-  }
-
-  .projects {
-    margin-top: 240px;
-
-    .project {
-      margin-bottom: 100px;
-
-      &.left {
-        padding-right: 62px;
+      @include for-tablet-only {
+        margin-bottom: 60px;
       }
-
-      &.right {
-        padding-left: 62px;
-      }
-
-      .image {
-        height: 540px;
-        width: 100%;
-        padding: 30px;
-        background-color: #eee;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        min-height: 500px;
-
-        &:hover {
-          overflow: hidden;
-
-          img {
-            filter: blur(30px);
-          }
-
-          .hover {
-            opacity: 1;
-          }
-        }
-
-        .hover {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(#000, 0.7);
-          z-index: 10;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 22px;
-          border-radius: 8px;
-          font-weight: 700;
-          opacity: 0;
-          transition: opacity 0.2s ease;
-        }
-
-        img {
-          width: 100%;
-          transition: filter 0.3s ease;
-        }
-
-        &.m {
-          background-color: #ffd3dd;
-        }
-
-        &.h {
-          background-color: #f4f5fc;
-        }
-
-        &.c {
-          background-color: #fff9c7;
-        }
-
-        &.r {
-          background-color: #d4eedb;
-        }
-
-        &.p {
-          background-color: #e3eeff;
-        }
-
-        &.i {
-          background-color: #ffcec7;
-        }
-
-        &.statements {
-          background-color: #e4e3ff;
-        }
-
-        &.e {
-          background-color: #efe4df;
-        }
-      }
-
-      .details {
-        .title {
-          font-size: 30px;
-          font-weight: 500;
-          margin: 40px 0 30px;
-        }
-
-        .description {
-          font-size: 20px;
-          color: $font-color-light;
-          line-height: 34px;
-        }
-      }
-    }
-
-    .divider {
-      margin: 20px 0 70px;
     }
   }
 }
+
+.links {
+  padding-top: 40px;
+
+  @include for-tablet-only {
+    padding-top: 40px;
+  }
+
+  a {
+    margin-right: 40px;
+    font-size: 27px;
+    font-weight: 800;
+
+    @include for-tablet-only {
+      margin-right: 40px;
+      font-size: 22px;
+    }
+  }
+}
+
+.projects {
+  margin-top: 240px;
+
+  @include for-tablet-only {
+    margin-top: 200px;
+  }
+
+  .project {
+    margin-bottom: 100px;
+
+    &.left {
+      padding-right: 62px;
+    }
+
+    &.right {
+      padding-left: 62px;
+    }
+
+    .image {
+      height: 540px;
+      width: 100%;
+      padding: 30px;
+      background-color: #eee;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      min-height: 500px;
+
+      &:hover {
+        overflow: hidden;
+
+        img {
+          filter: blur(30px);
+        }
+
+        .hover {
+          opacity: 1;
+        }
+      }
+
+      .hover {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(#000, 0.7);
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        border-radius: 8px;
+        font-weight: 700;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+      }
+
+      img {
+        width: 100%;
+        transition: filter 0.3s ease;
+      }
+
+      &.m {
+        background-color: #ffd3dd;
+      }
+
+      &.h {
+        background-color: #f4f5fc;
+      }
+
+      &.c {
+        background-color: #fff9c7;
+      }
+
+      &.r {
+        background-color: #d4eedb;
+      }
+
+      &.p {
+        background-color: #e3eeff;
+      }
+
+      &.i {
+        background-color: #ffcec7;
+      }
+
+      &.statements {
+        background-color: #e4e3ff;
+      }
+
+      &.e {
+        background-color: #efe4df;
+      }
+    }
+
+    .details {
+      .title {
+        font-size: 30px;
+        font-weight: 500;
+        margin: 40px 0 30px;
+      }
+
+      .description {
+        font-size: 20px;
+        color: $content-color;
+        line-height: 34px;
+      }
+    }
+  }
+
+  .divider {
+    margin: 20px 0 70px;
+  }
+}
+
 
 .more {
   font-size: 30px;
@@ -289,42 +381,6 @@ a {
 @media (min-width: 1600px) {
   .container {
     width: 1440px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .content {
-    .quote {
-      padding-top: 40px;
-      font-size: 70px;
-    }
-
-    .divider {
-      margin: 40px 0;
-      width: 100px;
-    }
-
-    .about {
-      font-size: 22px;
-      line-height: 50px;
-
-      .intro {
-        margin-bottom: 60px;
-      }
-    }
-
-    .projects {
-      margin-top: 200px;
-    }
-
-    .links {
-      padding-top: 40px;
-
-      a {
-        margin-right: 40px;
-        font-size: 22px;
-      }
-    }
   }
 }
 
@@ -418,11 +474,6 @@ a {
       }
     }
 
-    .quote {
-      padding-top: 10px;
-      font-size: 50px;
-    }
-
     .divider {
       margin: 30px 0;
       width: 80px;
@@ -472,7 +523,7 @@ a {
       }
 
       .divider {
-        margin: 0px 0 50px;
+        margin: 0 0 50px;
       }
     }
 
